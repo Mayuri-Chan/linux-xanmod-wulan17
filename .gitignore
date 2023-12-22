@@ -1,0 +1,6 @@
+# generated keys
+certs-local/current
+certs-local/202*
+
+# python cache
+certs-local/lib/__pycache__

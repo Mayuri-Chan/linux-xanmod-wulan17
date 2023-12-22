@@ -240,6 +240,9 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${SRCDEST}/config.last"
+
+  msg2 "Rebuilding local signing key..."
+  ../../certs-local/genkeys.py -v --config .config
 }
 
 build() {
@@ -368,6 +371,23 @@ _package-headers() {
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
+
+  #
+  # Out-of-tree module signing
+  # This is run in the kernel source / build directory
+  #
+  msg2 "Local Signing certs for out-of-tree modules..."
+
+  certs_local_src="../../certs-local" 
+  certs_local_dst="${builddir}/certs-local"
+  $certs_local_src/install-certs.py $certs_local_dst
+
+  # DKMS tools
+  dkms_src="$certs_local_src/dkms"
+  dkms_dst="${pkgdir}/etc/dkms"
+  mkdir -p $dkms_dst
+
+  rsync -a $dkms_src/{kernel-sign.conf,kernel-sign.sh} $dkms_dst/
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
