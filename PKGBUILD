@@ -152,6 +152,13 @@ prepare() {
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
   fi
+  # Anbox compatibility
+  msg2 "Enabling ashmem and binder modules"
+  scripts/config --enable CONFIG_ASHMEM
+  scripts/config --enable CONFIG_ANDROID
+  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
+  scripts/config --enable CONFIG_ANDROID_BINDERFS
+  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
