@@ -1,4 +1,4 @@
-pkgbase = linux-xanmod
+pkgbase = linux-xanmod-wulan17
 	pkgdesc = Linux Xanmod - Stable Mainline [MAIN]
 	pkgver = 6.6.8
 	pkgrel = 1
@@ -26,7 +26,7 @@ pkgbase = linux-xanmod
 	sha256sums = e27ac8593cccac4b7831a0145535be4e5e5efe46594a67e946ff4848c80f5ba1
 	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
-pkgname = linux-xanmod
+pkgname = linux-xanmod-wulan17
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
 	depends = initramfs
@@ -40,6 +40,6 @@ pkgname = linux-xanmod
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-xanmod-headers
+pkgname = linux-xanmod-wulan17-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Stable Mainline [MAIN] kernel
 	depends = pahole

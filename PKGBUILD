@@ -71,7 +71,7 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-xanmod
+pkgbase=linux-xanmod-wulan17
 _major=6.6
 pkgver=${_major}.8
 _branch=6.x
@@ -133,7 +133,7 @@ prepare() {
 
   msg2 "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod-wulan17}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
