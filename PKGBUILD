@@ -103,6 +103,8 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/${_sf_branch}/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
+        linux-xanmod-wulan17.conf
+        linux-xanmod-wulan17.preset
         choose-gcc-optimization.sh)
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -119,6 +121,8 @@ done
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
             'e27ac8593cccac4b7831a0145535be4e5e5efe46594a67e946ff4848c80f5ba1'
+            '76fc07bdc02b9ce0e537334983b794c71c5227a1f51203267defdcb1d8e75afb'
+            'c1de728f516161f86da9c697cff701e637ab5389f005e3a8836466758d123734'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -286,6 +290,17 @@ _package() {
   msg2 "Installing modules..."
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+
+  _kernver=$(cat ${srcdir}/linux-${_major}/version)
+
+  msg2 "Installing files for mkinitcpio..."
+  install -D -m644 "${srcdir}/linux-xanmod-wulan17.conf" \
+    "$pkgdir/etc/mkinitcpio.d/linux-xanmod-wulan17.conf"
+
+  install -D -m644 "${srcdir}/linux-xanmod-wulan17.preset" \
+    "$pkgdir/etc/mkinitcpio.d/linux-xanmod-wulan17.preset"
+  sed -i "s/^ALL_kver=.*$/ALL_kver=$_kernver/" \
+    "$pkgdir/etc/mkinitcpio.d/linux-xanmod-wulan17.preset"
 
   # remove build link
   rm "$modulesdir"/build
