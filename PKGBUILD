@@ -73,7 +73,7 @@ fi
 
 pkgbase=linux-xanmod-wulan17
 _major=6.6
-pkgver=${_major}.9
+pkgver=${_major}.10
 _branch=6.x
 xanmod=1
 _revision=
@@ -120,7 +120,7 @@ done
 
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            '674be54d39a405cd11d8cbd9c2604f5e6e7fedee6b37d307edbb8ac46bc6a27f'
+            '29f423ed8398889ee43f6a29680e68653b6a5191c68d9e6d1aaf34faa27ba851'
             '76fc07bdc02b9ce0e537334983b794c71c5227a1f51203267defdcb1d8e75afb'
             'c1de728f516161f86da9c697cff701e637ab5389f005e3a8836466758d123734'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
