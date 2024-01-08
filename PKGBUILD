@@ -72,8 +72,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-wulan17
-_major=6.6
-pkgver=${_major}.10
+_major=6.7
+pkgver=${_major}.0
 _branch=6.x
 xanmod=1
 _revision=
@@ -102,7 +102,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/${_sf_branch}/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
+        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/edge/${_sf_branch}/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
         linux-xanmod-wulan17.conf
         linux-xanmod-wulan17.preset
         choose-gcc-optimization.sh)
@@ -120,7 +120,7 @@ done
 
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            '29f423ed8398889ee43f6a29680e68653b6a5191c68d9e6d1aaf34faa27ba851'
+            'c2603413fa9c6eb3f393e1adbe72e13185598b25936879588ed32a41e71ef9f8'
             '76fc07bdc02b9ce0e537334983b794c71c5227a1f51203267defdcb1d8e75afb'
             'c1de728f516161f86da9c697cff701e637ab5389f005e3a8836466758d123734'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
